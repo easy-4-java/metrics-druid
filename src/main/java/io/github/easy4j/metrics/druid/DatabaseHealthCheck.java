@@ -1,4 +1,4 @@
-package io.github.hiwepy.metrics.druid;
+package io.github.easy4j.metrics.druid;
 
 import com.alibaba.druid.stat.DruidDataSourceStatManager;
 import com.alibaba.druid.stat.DruidStatService;
