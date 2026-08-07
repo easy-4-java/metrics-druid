@@ -4,7 +4,9 @@
 
 [![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/metrics-druid) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 
-> **Status**: maintained on the `feature/2.0.x` line (JDK 17). Artifacts are not yet published to Maven Central; they are distributed through the project's private repository and GitHub Releases.
+metrics-druid bridges Dropwizard Metrics health checks with Alibaba Druid connection-pool statistics
+
+> **Status**: maintained on the `feature/2.0.x` line (JDK 8). Artifacts are not yet published to Maven Central; they are distributed through the project's private repository and GitHub Releases.
 
 ## Table of Contents
 
