@@ -4,6 +4,8 @@
 
 [![Java](https://img.shields.io/badge/Java-8-orange)](https://github.com/easy-4-java/metrics-druid) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 
+metrics-druid 将 Dropwizard Metrics 健康检查与 阿里巴巴 Druid 连接池统计打通。
+
 > **项目状态**：`feature/1.0.x` 版本线维护中（JDK 8）。制品尚未发布到 Maven Central，通过项目私服与 GitHub Releases 分发。
 
 ## 目录
