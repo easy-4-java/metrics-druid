@@ -310,6 +310,7 @@
         <druid.version>1.2.28</druid.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-jacoco-plugin.version>0.8.15</maven-jacoco-plugin.version>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
     <maven.compiler.release>${java.version}</maven.compiler.release></properties>
 
     
