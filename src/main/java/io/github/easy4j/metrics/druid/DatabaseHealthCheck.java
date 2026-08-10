@@ -35,7 +35,7 @@ import com.codahale.metrics.health.HealthCheck;
  * remote "is connected" signal &mdash; it simply validates that the local
  * runtime can interact with Druid's in-process registry.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see HealthCheck
  * @see DruidStatService#getInstance()
