@@ -19,6 +19,8 @@ import com.alibaba.druid.stat.DruidDataSourceStatManager;
 import com.alibaba.druid.stat.DruidStatService;
 import com.codahale.metrics.health.HealthCheck;
 
+import java.util.Collections;
+
 /**
  * Dropwizard {@link HealthCheck} that pings the Druid connection-pool statistics
  * registry to confirm the surrounding JVM can collect JDBC pool metrics.
@@ -71,7 +73,7 @@ public class DatabaseHealthCheck extends HealthCheck {
     public HealthCheck.Result check() throws Exception {
 
         // Refresh WallStat counters (no-op in the absence of a configured filter).
-        statService.getWallStatMap(null);
+        statService.getWallStatMap(Collections.emptyMap());
 
         // Force materialisation of any registered Druid data sources.
         DruidDataSourceStatManager.getInstances();
