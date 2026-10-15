@@ -43,30 +43,14 @@ public class DatabaseHealthCheckTest {
 
     /**
      * The probe should report a healthy result whenever Druid's internal
-     * registry can be touched without exception. Because some Druid releases
-     * accept a {@code null} data-source argument while others raise an
-     * {@link IllegalArgumentException} or {@link NullPointerException}, this
-     * test accepts a healthy result OR a Druid-reported exception.
+     * registry can be touched without exception.
      */
     @Test
-    public void shouldReturnHealthyResultWhenDruidIsAvailable() {
+    public void shouldReturnHealthyResultWhenDruidIsAvailable() throws Exception {
         DatabaseHealthCheck check = new DatabaseHealthCheck();
-
-        try {
-            HealthCheck.Result result = check.check();
-            assertNotNull("check() must never return null", result);
-            assertTrue("check() should report a healthy result", result.isHealthy());
-        } catch (RuntimeException e) {
-            // Some Druid versions throw on getWallStatMap(null); that still
-            // means the underlying probe is wired up correctly.
-            assertTrue("unexpected error: " + e,
-                    e.getMessage() == null
-                            || e.getMessage().contains("parameters")
-                            || e instanceof NullPointerException
-                            || e instanceof IllegalArgumentException);
-        } catch (Exception e) {
-            throw new AssertionError("checked exception from check(): " + e, e);
-        }
+        HealthCheck.Result result = check.check();
+        assertNotNull("check() must never return null", result);
+        assertTrue("check() should report a healthy result", result.isHealthy());
     }
 
     /**
@@ -75,19 +59,12 @@ public class DatabaseHealthCheckTest {
      * scrape.
      */
     @Test
-    public void shouldBeIdempotentAcrossInvocations() {
+    public void shouldBeIdempotentAcrossInvocations() throws Exception {
         DatabaseHealthCheck check = new DatabaseHealthCheck();
 
         for (int i = 0; i < 5; i++) {
-            try {
-                HealthCheck.Result result = check.check();
-                assertTrue("iteration " + i + " should be healthy", result.isHealthy());
-            } catch (RuntimeException e) {
-                // accept Druid-driver-side NPE as we did in the single-call
-                // case; the only invariant we care about is no JVM crash.
-            } catch (Exception e) {
-                throw new AssertionError("unexpected checked exception: " + e, e);
-            }
+            HealthCheck.Result result = check.check();
+            assertTrue("iteration " + i + " should be healthy", result.isHealthy());
         }
     }
 }
