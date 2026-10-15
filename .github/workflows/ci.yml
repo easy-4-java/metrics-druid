@@ -4,8 +4,8 @@
 #   - push / pull_request on the feature/3.0.x branch
 #   - manual workflow_dispatch
 #
-# Runs `mvn -B clean verify` which includes the JaCoCo coverage gate
-# (90% line coverage, haltOnFailure=false) configured in the POM.
+# Runs the Maven 4 wrapper, which is required by the 4.1.0 POM model, and enforces
+# the 90% line coverage gate configured in the POM.
 name: CI
 
 on:
@@ -35,7 +35,7 @@ jobs:
           cache: maven
 
       - name: Build and verify with JaCoCo coverage gate
-        run: mvn -B --no-transfer-progress clean verify
+        run: bash ./mvnw -B --no-transfer-progress clean verify
 
       - name: Upload JaCoCo coverage report
         if: always()
